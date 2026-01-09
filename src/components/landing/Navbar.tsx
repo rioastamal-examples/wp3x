@@ -2,9 +2,10 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
+import { useNavigate } from "react-router-dom";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const navLinks = [
     { name: "Fitur", href: "#fitur" },
@@ -44,10 +45,10 @@ const Navbar = () => {
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center gap-4">
-            <Button variant="ghost" size="sm">
+            <Button variant="ghost" size="sm" onClick={() => navigate("/login")}>
               Masuk
             </Button>
-            <Button size="sm">Mulai Sekarang</Button>
+            <Button size="sm" onClick={() => navigate("/login")}>Mulai Sekarang</Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -84,10 +85,10 @@ const Navbar = () => {
                 </a>
               ))}
               <div className="flex flex-col gap-2 pt-4 border-t border-border">
-                <Button variant="ghost" size="sm" className="justify-start">
+                <Button variant="ghost" size="sm" className="justify-start" onClick={() => { setIsOpen(false); navigate("/login"); }}>
                   Masuk
                 </Button>
-                <Button size="sm">Mulai Sekarang</Button>
+                <Button size="sm" onClick={() => { setIsOpen(false); navigate("/login"); }}>Mulai Sekarang</Button>
               </div>
             </div>
           </motion.div>
